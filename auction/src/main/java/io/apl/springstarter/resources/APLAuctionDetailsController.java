@@ -1,11 +1,15 @@
 package io.apl.springstarter.resources;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import io.apl.springstarter.model.Player;
@@ -20,13 +24,10 @@ public class APLAuctionDetailsController {
     }
 
 	
-//	@RequestMapping(value ="/playerdetails",consumes = MediaType.)
-//	@ResponseStatus(HttpStatus.OK)
-//	@ResponseBody
-//	@PostMapping("/post")
-//	
-	@CrossOrigin(origins = "https://webmountstudio.com/")
-	@PostMapping(path = "/playerdetails", consumes = "application/json", produces = "application/json")
+	@RequestMapping(value ="/playerdetails", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseStatus(HttpStatus.OK)
+	@ResponseBody
+	@PostMapping("/post")
 	public ResponseEntity<?> newBazz(@RequestBody Player playerDetail){
 		try {
 			PlayerDBAccess playerDB = new PlayerDBAccess();
