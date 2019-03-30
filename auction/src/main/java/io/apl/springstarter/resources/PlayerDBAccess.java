@@ -14,6 +14,7 @@ public class PlayerDBAccess {
 		dc = new DatabaseConnection();
 		MongoCollection<Document> players = dc.getCollection(Constant.PLAYERDATABASENAME);
 		Document player = new Document();
+		
 		player.put("firstName", newPlayer.getFirstName());
 		player.put("lastName", newPlayer.getLastName());
 		player.put("address", newPlayer.getAddress());

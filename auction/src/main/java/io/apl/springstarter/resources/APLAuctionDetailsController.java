@@ -1,6 +1,7 @@
 package io.apl.springstarter.resources;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -23,11 +24,12 @@ public class APLAuctionDetailsController {
     }
 
 	
-	@RequestMapping(value ="/playerdetails", method = RequestMethod.POST)
+	@RequestMapping(value ="/playerdetails", method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(HttpStatus.OK)
 	@ResponseBody
 	@PostMapping("/post")
 	public ResponseEntity<?> newBazz(@RequestBody Player playerDetail){
+		try {
 			PlayerDBAccess playerDB = new PlayerDBAccess();
 			boolean isPlayerRegistered = false;
 			if(playerDetail!=null)
@@ -38,5 +40,9 @@ public class APLAuctionDetailsController {
 				return new ResponseEntity<>("Player successfully registered", HttpStatus.OK);
 			else
 				return new ResponseEntity<>("problem", HttpStatus.OK);
+		}catch (Exception e) {
+			return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+		}
+			
 	}
 }

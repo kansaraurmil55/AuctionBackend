@@ -5,7 +5,7 @@ public class Player {
 	private String firstName;
 	private String lastName;
 	private String email;
-	private int mobileNumber;
+	private long mobileNumber;
 	private String address;
 	private String streetAddress;
 	private String city;
@@ -218,12 +218,12 @@ public class Player {
 	}
 
 
-	public int getMobileNumber() {
+	public long getMobileNumber() {
 		return mobileNumber;
 	}
 
 
-	public void setMobileNumber(int mobileNumber) {
+	public void setMobileNumber(long mobileNumber) {
 		this.mobileNumber = mobileNumber;
 	}
 
